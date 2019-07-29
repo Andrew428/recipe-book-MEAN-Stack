@@ -1,3 +1,6 @@
+## This project is still in progress.  
+Next steps are to complete the user authentication folowed by complete the backend REST api's.  
+
 # RecipeBook
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.1.
