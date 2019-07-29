@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onSubmit()" #addIngredientForm="ngForm">
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label for="name">Name</label>
+          <input 
+            type="text" 
+            id="name" 
+            class="form-control"
+            placeholder="Name"
+            name="name"
+            ngModel
+            #name="ngModel"
+            required
+          >
+          <p class="help-block input-error" *ngIf="!name.valid && name.touched">
+            Ingredient requiered
+          </p>
+        </div>
+        <div class="col-sm-5 form-group">
+          <label for="amount">Amount</label>
+          <input 
+            type="text" 
+            id="amount" 
+            class="form-control"
+            placeholder="Amount"
+            name="amount"
+            ngModel
+            #amount="ngModel"
+            required
+          >
+          <p class="help-block input-error" *ngIf="!amount.valid && amount.touched">
+            Amount requiered
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button 
+            class="btn btn-success" 
+            type="submit"            
+            [disabled]="!addIngredientForm.valid">Add to List</button>  
+          <button class="btn btn-primary" type="button" (click)="clearIngredients()">Clear Shopping List</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

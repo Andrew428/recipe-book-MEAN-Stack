@@ -1,0 +1,25 @@
+<div class='row'>
+  <div class='col-xs-10'>
+    <app-shopping-list-edit></app-shopping-list-edit>
+    <hr>
+    <h3>Shopping List</h3>
+    <ul class="list-group">
+      <div class="list-group-item shopping-list-li"
+           style="cursor: pointer"
+           *ngFor="let ingredient of ingredients; let i = index"
+           [id]="i">
+        <p *ngIf="ingredientToUpdate != i"
+           class="sl-text">{{ ingredient.name }} {{ingredient.amount}}</p>
+        <app-shopping-list-inline-edit *ngIf="ingredientToUpdate == i"></app-shopping-list-inline-edit>
+        <button *ngIf="ingredientToUpdate != i"
+                class="btn btn-danger btn-delete btn-shopping-list-li"
+                type="button"
+                (click)="deleteIngredient(ingredient, i)">Delete</button>
+        <button *ngIf="ingredientToUpdate != i"
+                class="btn btn-primary btn-update btn-update-{{i}} btn-shopping-list-li"
+                type="button"
+                (click)="updateSLIngredientSelected(ingredient, i)">Update</button>
+      </div>
+    </ul>
+  </div>
+</div>

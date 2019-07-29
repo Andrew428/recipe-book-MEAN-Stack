@@ -1,0 +1,16 @@
+@import '../../../../sass/styles.scss';
+
+
+input.ng-invalid.ng-touched {
+    border: 1px solid $errorColor;
+  }
+.input-error {
+    color: $errorColor;
+}
+
+.col {
+  padding: 10px;
+}
+.btn-remove-ingredient {
+  margin-top:33px;
+}

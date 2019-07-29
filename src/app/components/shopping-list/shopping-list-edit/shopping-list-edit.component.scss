@@ -1,0 +1,11 @@
+@import '../../../../sass/styles.scss';
+.btn {
+    margin-right:1rem;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid $errorColor;
+  }
+.input-error {
+    color:$errorColor;
+}

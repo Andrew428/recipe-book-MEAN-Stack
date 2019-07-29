@@ -1,0 +1,52 @@
+<nav class='navbar navbar-default'>
+  <div class='container-fluid'>
+    <div class="navbar-header">
+      <button type="button"
+              class="navbar-toggle"
+              (click)="collapsed = !collapsed">
+        <span class="icon-bar"
+              *ngFor="let iconBar of [1, 2, 3]"></span>
+      </button>
+      <div appHighlightDir
+           routerLink="/"
+           class="navbar-brand">Recipe Book</div>
+    </div>
+    <div class="navbar-collapse"
+         [class.collapse]="collapsed"
+         (window:resize)="collapsed = true">
+      <ul class='nav navbar-nav'>
+        <li appHighlightDir
+            style="cursor: pointer"
+            routerLinkActive="active"><a routerLink="/recipes"
+             (click)="onNavSelect('recipe')">Recipes</a></li>
+        <li appHighlightDir
+            style="cursor: pointer"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"><a routerLink="/shopping"
+            (click)="onNavSelect('shopping')">Shopping</a></li>
+      </ul>
+      <ul appHighlightDir
+          class='nav navbar-nav navbar-right'>
+        <li appDropdown
+            class='dropdown'>
+          <div class='dropdown-toggle'
+               role='button'>Users<span class='caret'></span></div>
+          <ul class='dropdown-menu'>
+            <li appHighlightDir
+                style="cursor: pointer">
+              <div>SignUp</div>
+            </li>
+            <li appHighlightDir
+                style="cursor: pointer">
+              <div>Login</div>
+            </li>
+            <li appHighlightDir
+                style="cursor: pointer">
+              <div>Logout</div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

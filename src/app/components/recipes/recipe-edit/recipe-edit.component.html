@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-xs-8">
+      <h3 *ngIf="editMode">Edit Recipe</h3>
+      <h3 *ngIf="!editMode">Add Recipe</h3>
+      <form [formGroup]="recipeForm"
+            (ngSubmit)="onSubmit()">
+        <div class="col col-xs-10 recipeName-div">
+          <button *ngIf="!editMode"
+                  class="btn btn-success btn-submit"
+                  type="submit"
+                  [disabled]="!recipeForm.valid">Add Recipe</button>
+          <button *ngIf="editMode"
+                  class="btn btn-success btn-submit"
+                  type="submit"
+                  [disabled]="!recipeForm.valid">Update Recipe</button>
+           <hr>
+        </div>
+        <div class="col col-xs-10 recipeName-div">
+          <label for="recipeName">Name</label>
+          <input type="text"
+                 id="recipeName"
+                 formControlName="recipeName"
+                 class="form-control">
+          <span *ngIf="!recipeForm.get('recipeName').valid && recipeForm.get('recipeName').touched"
+                class="help-block input-error">This field is required!
+          </span>
+        </div>
+        <div class="col col-xs-10 recipeDesc-div">
+          <label for="recipeDesc">Description</label>
+          <textarea type="text"
+                 id="recipeDesc"
+                 formControlName="recipeDesc"
+                 class="form-control"
+                 rows="6"></textarea>
+          <span *ngIf="!recipeForm.get('recipeDesc').valid && recipeForm.get('recipeDesc').touched"
+                class="help-block input-error">This field is required!
+          </span>
+        </div>
+        <div class="col col-xs-10 recipePhotoURL-div">
+          <label for="recipePhotoURL">Photo URL</label>
+          <input type="text"
+                 id="recipePhotoURL"
+                 formControlName="recipePhotoURL"
+                 class="form-control"
+                 #recipePhotoURL>
+          <span *ngIf="!recipeForm.get('recipePhotoURL').valid && recipeForm.get('recipePhotoURL').touched"
+                class="help-block input-error">
+            <span *ngIf="recipeForm.get('recipePhotoURL').errors['pattern']">Enter a valid image url!</span>
+            <span *ngIf="recipeForm.get('recipePhotoURL').errors['required']">This field is required!</span>
+          </span>
+          <div class="row">
+            <div class="col-xs-10">
+              <img [src]="recipePhotoURL.value"
+                   [alt]=""
+                   class="img-responsive">
+            </div>
+          </div>          
+        </div>       
+        <div class="col col-xs-10 recipeIngredient-div">                 
+          <div formArrayName="ingredients">
+            <div class="col-xs-10">                
+              <h4>Add ingredients</h4>
+              <button class="btn btn-default"
+                      type="button"
+                      (click)="onAddIngredient()">Add
+                ingredient</button>
+            </div>
+            <div class="form-group col-xs-12"
+                 *ngFor="let ingredient of recipeForm.get('ingredients').controls; let i = index"
+                 [formGroupName]="i">
+              <div class="col col-xs-6 recipeIngredientName-div">
+                <label for="recipeIngredientName">Name</label>
+                <input type="text"
+                       id="recipeIngredientName"
+                       class="form-control ingredientName ingredientName"
+                       formControlName="name">                
+              </div>
+              <div class="col col-xs-5 recipeIngredientAmount-div">
+                <label for="recipeIngredientAmount">Amount</label>
+                <input type="text"
+                       id="recipeIngredientAmount"
+                       class="form-control ingredientAmount ingredientAmount"
+                       formControlName="amount">                
+              </div>
+              <button class="btn btn-danger btn-remove-ingredient"
+                      type="button"
+                      (click)="onRemoveIngredient(i)">X</button>
+            </div>
+          </div>
+        </div>       
+      </form>
+    </div>
+  </div>
+</div>

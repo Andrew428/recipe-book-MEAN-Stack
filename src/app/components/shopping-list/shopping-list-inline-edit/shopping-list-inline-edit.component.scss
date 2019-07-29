@@ -1,0 +1,21 @@
+@import '../../../../sass/styles.scss';
+
+
+.btn-shopping-list-li{
+    float:right;
+    margin-left: 10px;
+    margin-left: 10px;    
+}
+
+.sl-inline-edit-row{
+    margin-right: 0px;
+}
+
+input.ng-invalid.ng-touched {
+        border: 1px solid $errorColor;
+  
+}
+
+.input-error {
+    color:$errorColor;
+}

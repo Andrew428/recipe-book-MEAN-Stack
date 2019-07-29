@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-xs-12">
+    <img src=""
+         alt=""
+         class="img-responsive">
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <img src="{{ recipeDetails.imagePath }}"
+         alt="{{ recipeDetails.name }}"
+         class="img-responsive"
+         style="max-height: 250px">
+    <h1>{{ recipeDetails.name }}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="btn-group">
+      <div appDropdown
+           class="btn-group">
+        <button type="button"
+                class="btn btn-primary dropdown-toggle">
+          Manage Recipe <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li appHighlightDir
+              (click)="addAllToShoppingList(recipeDetails.ingredients)">
+            <div>Add to Shopping List</div>
+          </li>
+          <li appHighlightDir
+              (click)="editRecipe(recipeDetails)">
+            <div>Edit Recipe </div>
+          </li>
+          <li appHighlightDir
+            (click)="deleteRecipe()">
+            <div>Delete Recipe</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h4>{{ recipeDetails.description }}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="list-group">
+        <li class="list-group-item"
+            *ngFor="let ingredient of recipeDetails.ingredients; let i = 'index'">
+          <p class="ingredient-detai-p">{{ i }} - {{ ingredient.name }} - {{ ingredient.amount }}</p>
+          <button type="button"
+                  class="btn btn-success dropdown-toggle add-to-list-btn"
+                  (click)="addToShoppingList(ingredient, i)">
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>

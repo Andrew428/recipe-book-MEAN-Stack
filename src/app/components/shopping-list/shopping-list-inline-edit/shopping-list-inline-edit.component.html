@@ -1,0 +1,41 @@
+<div class="row sl-inline-edit-row">
+    <div class="col-xs-12">
+      <form (ngSubmit)="onSubmit()" #updateIngredientForm="ngForm">
+        <div class="row">
+          <div class="col-sm-4 form-group">            
+            <input 
+              type="text" 
+              id="name" 
+              class="form-control"
+              placeholder="Name"
+              name="name"
+              [(ngModel)]="slIngredientSelected.name"
+              #name="ngModel"
+              required
+            >            
+            <p class="help-block input-error" *ngIf="!name.valid && name.touched">
+              Ingredient requiered
+            </p>
+          </div>
+          <div class="col-sm-4 form-group">            
+            <input 
+              type="text" 
+              id="amount" 
+              class="form-control"
+              placeholder="Amount"
+              name="amount"
+              [(ngModel)]="slIngredientSelected.amount"
+              #amount="ngModel"
+              required
+            >
+            <p class="help-block input-error" *ngIf="!amount.valid && amount.touched">
+              Amount requiered
+            </p>
+          </div>
+          <button class="btn btn-primary btn-shopping-list-li" type="button" (click)="cancelUpdate()">Cancel</button> 
+          <button class="btn btn-success btn-shopping-list-li" type="submit" [disabled]="!updateIngredientForm.valid">Save</button>
+        </div>               
+      </form>
+    </div>
+  </div>
+  
